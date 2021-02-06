@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
   	productos: [],
-    vendidos: []
+    vendidos: [],
+    prodComprados:[]
   },//		State
   mutations: {
   	refreshProds(state){
@@ -17,6 +18,14 @@ export default new Vuex.Store({
   			state.productos = DB;
   		}
   	},
+    refreshCompras(state){
+      let comprados = JSON.parse(localStorage.getItem('ListaCompras'));
+      if (comprados == null){
+        state.prodComprados = [];
+      }else{
+        state.prodComprados = comprados;
+      }
+    },
     comprado(state,objC){
 
       let DBC = JSON.parse(localStorage.getItem('ListaCompras'));
