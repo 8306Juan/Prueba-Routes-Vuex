@@ -5,7 +5,7 @@
 		<div class="flex justify-around flex-wrap">
 
 			<div v-for="(prod,idx) of productos" :key="prod.nombre">
-				<div class="w-40 mt-4 m-auto p-3 bg-gray-200">
+				<div class="w-40 mt-4 m-auto p-3 bg-purple-200">
 					<label class="text-xl"><b>{{prod.nombre}}</b></label>
 					<img v-bind:src="prod.img">
 					<p class="block mt-2 border-2 border-gray-400 rounded-md">{{prod.descrip}}</p>
