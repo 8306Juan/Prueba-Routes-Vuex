@@ -29,16 +29,34 @@ export default new Vuex.Store({
     comprado(state,objC){
 
       let DBC = JSON.parse(localStorage.getItem('ListaCompras'));
+      let stockOK = false;
       if (DBC == null){
-        state.vendidos.push(JSON.parse(objC));
-        console.log(state.vendidos);
+        let obj = JSON.parse(objC);
+        obj.stock = 1;
+        state.vendidos.push(obj);
         localStorage.setItem('ListaCompras', JSON.stringify(state.vendidos));
       }else{
-        state.vendidos = DBC;
-        state.vendidos.push(JSON.parse(objC));
-        localStorage.setItem('ListaCompras', JSON.stringify(state.vendidos));
-
+        for(let i=0; i<DBC.length; i++){
+          if (DBC[i].nombre == JSON.parse(objC).nombre){
+            DBC[i].stock++;
+            state.vendidos = DBC;
+            localStorage.setItem('ListaCompras', JSON.stringify(state.vendidos));
+            stockOK = true;
+          }
+        }
+        if (stockOK === false){
+            JSON.parse(objC).stock = 1;
+            state.vendidos = DBC;
+            let obj = JSON.parse(objC);
+            obj.stock = 1;
+            state.vendidos.push(obj);
+            localStorage.setItem('ListaCompras', JSON.stringify(state.vendidos));
+        }
       }
+
+      
+
+      
     }
   },//		Mutations
   actions: {

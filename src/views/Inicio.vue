@@ -43,6 +43,7 @@
 				localStorage.setItem('ListaProds', JSON.stringify(this.productos));
 
 				
+
 				let objC = JSON.stringify(this.productos[idx]);
 				this.$store.commit('comprado', objC);
 

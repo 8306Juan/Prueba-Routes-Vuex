@@ -43,6 +43,12 @@
 				this.prods.push({nombre: this.nombre, img:this.img, descrip:this.descrip, precio:this.precio, stock:this.stock});
 
 				localStorage.setItem('ListaProds',JSON.stringify(this.prods));
+
+				nombre: this.nombre = '';
+				img:this.img = '';
+				descrip:this.descrip = '';
+				precio:this.precio = 0;
+				stock:this.stock = 0;
 			}
 		},
 		computed:{
